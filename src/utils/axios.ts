@@ -5,7 +5,9 @@ import { generateToken } from "./token";
 const useInterceptor = () => {
   const { authToken: token, setAuthToken } = useAuth();
 
-  const axiosInstance = axios.create();
+ const axiosInstance = axios.create({
+    baseURL: API_CONFIG.weatherBaseUrl,
+  });
 
   axiosInstance.interceptors.request.use(
     (config) => {
